@@ -66,10 +66,10 @@
                         </goals>
                         <configuration>
                             <resources>
-                                            <resource>
-                                                <directory>${project.build.directory}/libs</directory>
-                                                <targetPath>lib/</targetPath>
-                                            </resource>
+                                   <resource>
+                                       <directory>${project.build.directory}/libs</directory>
+                                       <targetPath>lib/</targetPath>
+                                   </resource>
                             </resources>
                         </configuration>
                     </execution>
