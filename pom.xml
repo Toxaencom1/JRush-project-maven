@@ -51,14 +51,30 @@
 
     <build>
 
-        <resources>
-            <resource>
-                <directory>${project.build.directory}/libs</directory>
-                <targetPath>lib/</targetPath>
-            </resource>
-        </resources>
-
         <plugins>
+
+            <!-- For copy all dependencies into Jar archive-->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                            <resource>
+                                                <directory>${project.build.directory}/libs</directory>
+                                                <targetPath>lib/</targetPath>
+                                            </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!-- Usual compilation -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -79,6 +95,7 @@
                 </configuration>
             </plugin>
 
+            <!-- For exclude strange test-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -90,6 +107,7 @@
                 </configuration>
             </plugin>
 
+            <!-- For create Manifest and archive to jar-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -109,6 +127,7 @@
                 </configuration>
             </plugin>
 
+            <!-- For copy dependencies-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
